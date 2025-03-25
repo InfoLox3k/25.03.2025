@@ -1,0 +1,11 @@
+import flet as ft
+from Model import *
+
+def input_flet():
+    input_field = ft.TextField(label="Введите выражение: ")
+    return input_field
+
+def notes_new(input_field, notes):
+    notes.controls.append(ft.Text(input_field.value))
+    notes.controls.append(ft.Text(calculate(input_field)))
+    input_field.value = ""
