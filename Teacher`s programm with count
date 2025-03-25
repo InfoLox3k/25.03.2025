@@ -1,0 +1,26 @@
+
+
+import flet as ft
+
+
+def main(page: ft.Page):
+    page.title = "Заметки"
+
+    notes = ft.Column()
+    input_field = ft.TextField(label="Введите заметку")
+    note_count_text = ft.Text("Количество заметок: 0", size=20)  # Элемент для отображения количества заметок
+
+    def add_note(e):
+        if input_field.value:
+            notes.controls.append(ft.Text(input_field.value))
+            input_field.value = ""
+            note_count_text.value = f"Кол-во заметок: {len(notes.controls)}"
+            page.update()
+
+    button = ft.ElevatedButton("Добавить заметку", on_click=add_note)
+
+    page.add(input_field, button, notes, note_count_text)
+
+
+
+ft.app(target=main)
