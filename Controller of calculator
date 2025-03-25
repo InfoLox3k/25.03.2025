@@ -1,0 +1,22 @@
+from View import *
+
+
+def main(page: ft.Page):
+
+    page.title = "Заметки"
+
+    notes = ft.Column()
+    input_field = input_flet()
+
+    def add_note(e):
+        if input_field.value:
+            notes_new(input_field, notes)
+            page.update()
+
+    button = ft.ElevatedButton("Добавить заметку", on_click=add_note)
+
+    page.add(input_field, button, notes)
+
+
+
+ft.app(target=main)
